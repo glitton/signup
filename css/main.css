@@ -1,0 +1,46 @@
+/*Log-in form CSS*/
+
+.navbar {
+  border-radius: 0;
+}
+
+.sign-up {
+  margin-top: 100px;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+h4 {
+  text-align: center;
+}
+
+input {
+  margin-bottom: 20px;
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid #df382c;
+}
+
+input.ng-valid.ng-touched {
+  border: 2px solid #2c8d3a;
+}
+
+.ng-invalid .btn {
+  background-color: #978e83;
+  border-color: #978e83;
+}
+
+.error {
+  color: #df382c;
+}
+
+.submit {
+  text-align: center;
+
+}
+
