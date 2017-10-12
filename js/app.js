@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute', 'firebase']);
 
 myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider
@@ -12,7 +12,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
     })
     .when('/success', {
       templateUrl: 'views/success.html',
-      controller: 'SignupController'
+      controller: 'SuccessController'
+    })
+    .when('/logout', {
+      templateUrl: 'views/logout.html',
+      controller: 'LogoutController'
     })
     .otherwise({
       redirectTo: '/login'

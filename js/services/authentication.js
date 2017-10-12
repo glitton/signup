@@ -1,63 +1,24 @@
-myApp.factory('Authentication',
-  ['$rootScope', '$location', '$firebaseObject', '$firebaseAuth',
-  function($rootScope, $location, $firebaseObject, $firebaseAuth) {
+myApp.factory('Authentication', ['$rootScope', '$firebaseAuth', function($rootScope, $firebaseAuth) {
 
+  // Create a variable to reference firebase DB
   var ref = firebase.database().ref();
+  // Create variable to reference firebase authentication
   var auth = $firebaseAuth();
-  var myObject;
 
-  auth.$onAuthStateChanged(function(authUser) {
-    if(authUser) {
-      var userRef = ref.child('users').child(authUser.uid);
-      var userObj = $firebaseObject(userRef);
-      $rootScope.currentUser = userObj;
-    } else {
-      $rootScope.currentUser = '';
-    }
-  });
-
-  myObject = {
+  return {
     login: function(user) {
-      auth.$signInWithEmailAndPassword(
-        user.email,
-        user.password
-      ).then(function(user) {
-        $location.path('/success');
-      }).catch(function(error) {
-        $rootScope.message = error.message;
-      }); //signInWithEmailAndPassword
+      $$rootScope.message = "Welcome " + $$rootScope.user.email;
     }, //login
-
-    logout: function() {
-      return auth.$signOut();
-    }, //logout
-
-    requireAuth: function() {
-      return auth.$requireSignIn();
-    }, //require Authentication
-
-    register: function(user) {
+    signup: function(user) {
       auth.$createUserWithEmailAndPassword(
-        user.email,
+        user.email, 
         user.password
-      ).then(function(regUser) {
-        var regRef = ref.child('users')
-          .child(regUser.uid).set({
-            date: firebase.database.ServerValue.TIMESTAMP,
-            regUser: regUser.uid,
-            firstname: user.firstname,
-            lastname: user.lastname,
-            email: user.email
-          }); //userinfo
-          myObject.login(user);
-      }).catch(function(error) {
-        $rootScope.message = error.message;
-      }); //createUserWithEmailAndPassword
-    } //register
-
+    ).then(function(regUser) {
+        $rootScope.message = "Hello " + user.firstname + ". You now have access to magic!"; 
+    }).catch(function(error) {
+      $$rootScope.message = error.message;
+    }); //end of $createUserWithEmailAndPassword
+    } //signup
   }; //return
 
-
-  return myObject;
-
-}]); //factory
+}]); //end of factory

@@ -1,7 +1,8 @@
 <!-- sign up form -->
-  <form class="user-form" id="user-profile" name="myform" ng-submit="login()" novalidate>
+  <form class="user-form" id="user-profile" name="myform" ng-submit="signup()" novalidate>
   <h2 class="sign-up">Sign Up!</h2>
-    <p>{{message}}</p>
+    <h4>Enter your details below</h4>
+      <p ng-show="message">{{message}}</p>
 
     <div class="form-group">
       <!-- First Name -->
@@ -19,9 +20,11 @@
 
       <!-- Create Account Button -->
       <div class="submit">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" 
+        ng-disabled="myform.$invalid">
           Submit
         </button>
+        <p>or <a ng-href="#/login">login</a></p>
       </div>  
     </div>
   </form>

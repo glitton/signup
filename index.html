@@ -24,11 +24,38 @@
     <script src="js/lib/angular/angular-route.min.js"></script>
     <!-- AngularJS Animate  -->
     <script src="js/lib/angular/angular-animate.min.js"></script>
+    <!-- Firebase script -->
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyBRmmFQeELqTGlgytUXyzj6rK1CPPkN2JA",
+        authDomain: "angular-signup.firebaseapp.com",
+        databaseURL: "https://angular-signup.firebaseio.com",
+        projectId: "angular-signup",
+        storageBucket: "",
+        messagingSenderId: "987716294863"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    
     <!-- My JS -->
     <script src="js/app.js"></script> 
+    <script src="js/services/authentication.js"></script>
     <script src="js/controllers/signup.js"></script>
+    <script src="js/controllers/success.js"></script>
+    <script src="js/controllers/logout.js"></script>
+
 </head>
 <body> 
+<header>
+  <!-- note the use of single quotes inside the double quotes for ng-include -->
+  <nav class="navbar navbar-default" ng-include="'views/nav.html'">
+    <!-- Navbar goes here -->
+  </nav>  
+</header>  
 
 <div class="container">
   <div class="row"> 
