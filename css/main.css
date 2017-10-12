@@ -4,6 +4,10 @@
   border-radius: 0;
 }
 
+.userinfo {
+  text-align: center;
+}
+
 .sign-up {
   margin-top: 100px;
   text-align: center;

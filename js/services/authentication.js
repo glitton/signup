@@ -1,9 +1,12 @@
-myApp.factory('Authentication', ['$rootScope', '$location', '$firebaseObject', '$firebaseAuth', function($rootScope, $location, $firebaseObject, $firebaseAuth) {
+myApp.factory('Authentication', 
+  ['$rootScope', '$location', '$firebaseObject', '$firebaseAuth', 
+  function($rootScope, $location, $firebaseObject, $firebaseAuth) {
 
   // Create a variable to reference firebase DB
   var ref = firebase.database().ref();
   // Create variable to reference firebase authentication
   var auth = $firebaseAuth();
+  var myObject;
 
   // Method that detects when a user is logged userInfo
   auth.$onAuthStateChanged(function(authUser) {
@@ -14,10 +17,9 @@ myApp.factory('Authentication', ['$rootScope', '$location', '$firebaseObject', '
     } else {
       $rootScope.currentUser = '';
     }
-  })
+  });
 
-
-  return {
+  myObject = {
     login: function(user) {
       auth.$signInWithEmailAndPassword(
         user.email,
@@ -28,6 +30,15 @@ myApp.factory('Authentication', ['$rootScope', '$location', '$firebaseObject', '
         $rootScope.message = error.message;
       }); //signInwithEmailAndPassword
     }, //login
+
+    logout: function() {
+      return auth.$signOut();
+    }, //logout
+
+    requireAuth: function() {
+      return auth.$requireSignIn();
+    }, //requireAuth
+
     signup: function(user) {
       auth.$createUserWithEmailAndPassword(
         user.email, 
@@ -40,12 +51,18 @@ myApp.factory('Authentication', ['$rootScope', '$location', '$firebaseObject', '
           firstname: user.firstname,
           lastname: user.lastname,
           email: user.email
-        }) // userInfo
-      $rootScope.message = "Hello " + user.firstname + ". You now have access to magic!"; 
+        }) // userInfo 
+        myObject.login(user);
     }).catch(function(error) {
       $rootScope.message = error.message;
     }); //end of $createUserWithEmailAndPassword
     } //signup
   }; //return
 
+  return myObject;
+
+
 }]); //end of factory
+
+
+    

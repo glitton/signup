@@ -16,9 +16,8 @@
         <li><a ng-href="#/">My Code</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a ng-href="#/signup">Sign up</a></li>
-        <li><a ng-href="#/login">Log in</a></li>
-        <li><a ng-href="#/logout">Log out</a></li>
+        <li><a ng-show="currentUser" ng-href="#/signup">Sign up</a></li>
+        <li><a ng-show="currentUser" ng-href="#/login">Log in</a></li>
       </ul>
     </div>
   </div>

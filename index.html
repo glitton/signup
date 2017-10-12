@@ -59,18 +59,23 @@
 </header>  
 
 <div class="container">
+  <div class="userinfo" ng-show="currentUser" ng-controller="SignupController">
+    <span class="userinfo">Hi {{ currentUser.firstname }}</span>
+    <a ng-href="#/login" ng-click="logout()">logout</a>
+  </div>
+</div>
+
+<div class="container">
   <div class="row"> 
-    <div class="userinfo" ng-show="currentUser" ng-controller="SignupController">
-      <span class="userinfo">Hello {{currentUser.firstname}}</span>
-    </div>
+
     <!-- spacer -->
-    <div class="col-lg-4 col-md-2 col-sm-1"></div>
+    <div class="col-lg-4 col-md-4 col-sm-4"></div>
     <!-- Angular here -->
-    <div class="col-lg-4 col-md-2 col-sm-1 main" ng-view>
+    <div class="col-lg-4 col-md-4 col-sm-4 main" ng-view>
 
     </div>
     <!-- spacer -->
-    <div class="col-lg-4 col-md-2 col-sm-1"></div>
+    <div class="col-lg-4 col-md-4 col-sm-4"></div>
   </div> <!-- End of row div -->
 </div> <!-- End of container -->
 
