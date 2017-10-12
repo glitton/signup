@@ -26,6 +26,7 @@
     <script src="js/lib/angular/angular-animate.min.js"></script>
     <!-- Firebase script -->
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <script>
       // Initialize Firebase
       var config = {
@@ -33,7 +34,7 @@
         authDomain: "angular-signup.firebaseapp.com",
         databaseURL: "https://angular-signup.firebaseio.com",
         projectId: "angular-signup",
-        storageBucket: "",
+        storageBucket: "angular-signup.appspot.com",
         messagingSenderId: "987716294863"
       };
       firebase.initializeApp(config);
@@ -59,11 +60,14 @@
 
 <div class="container">
   <div class="row"> 
+    <div class="userinfo" ng-show="currentUser" ng-controller="SignupController">
+      <span class="userinfo">Hello {{currentUser.firstname}}</span>
+    </div>
     <!-- spacer -->
     <div class="col-lg-4 col-md-2 col-sm-1"></div>
     <!-- Angular here -->
     <div class="col-lg-4 col-md-2 col-sm-1 main" ng-view>
-      
+
     </div>
     <!-- spacer -->
     <div class="col-lg-4 col-md-2 col-sm-1"></div>
